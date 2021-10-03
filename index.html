@@ -5,33 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Canvas</title>
+  <link rel="stylesheet" href="./resource/css/style.css">
 </head>
 
 <body>
-
-  <canvas id='canvas' width="250" height="250">
-    current stock price: $3.15 +0.15
-  </canvas>
-  <div id='SomeElementYouWantToAnimate'>SomeElementYouWantToAnimate</div>
-
-  <canvas style="border: 1px solid #000;" id='draw' width="500" height="500"></canvas>
-  <button id="clearCanvas">초기화</button>
-  <script type="module" src="./index.js"></script>
-  <script type="module" src="./draw.js">
-    import { removeAll } from './draw.js';
-
-    const clearButton = document.getElementById('clearCanvas');
-    console.log(clearButton)
-    clearButton.addEventListener('click', removeAll);
-  </script>
-  <script type="module">
-    import { clearAll } from './draw.js';
-
-    const clearButton = document.getElementById('clearCanvas');
-    console.log(clearButton)
-    clearButton.addEventListener('click', clearAll);
-  </script>
+  <div class="wrap">
+    <ul class="menu">
+      <li><a href="#drawing">Drawing</a></li>
+      <li><a href="#">Bounce Ball</a></li>
+      <li><a href="#">HeartBeat</a></li>
+    </ul>
+    <div id="Contents" class="contents">
+      <!-- <canvas id="canvas"></canvas> -->
+      <!-- <div id='SomeElementYouWantToAnimate'>SomeElementYouWantToAnimate</div> -->
+  
+      <!-- <canvas style="border: 1px solid #000;" id='draw' width="500" height="500"></canvas> -->
+      <button id="clearCanvas">초기화</button>
+    </div>
+    
+  </div>
 </body>
-
 </html>
+<!-- <script type="module" src="./index.js"></script> -->
+<!-- <script type="module" src="./resource/js/draw.js">
+  const clearButton = document.getElementById('clearCanvas');
+  console.log(clearButton)
+  clearButton.addEventListener('click', removeAll);
+</script> -->
+<script type="module">
+  import Drawing from './resource/js/draw.js';
+  new Drawing();
+  const menu = document.querySelector('.menu');
+  menu.addEventListener('click', (e) => {
+    console.log(e.target);
+  });
+</script>
+
+<!-- <script type="module">
+  import { clearAll } from './draw.js';
+
+  const clearButton = document.getElementById('clearCanvas');
+  console.log(clearButton)
+  clearButton.addEventListener('click', clearAll);
+</script> -->

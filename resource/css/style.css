@@ -1,0 +1,38 @@
+@charset "UTF-8";
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+
+
+.wrap {
+  display: flex;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+.menu {
+  width: 10%;
+  padding: 16px;
+  justify-content: space-around;
+  background-color: #000;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.contents {
+  
+}
+#canvas {
+  width: 80%;
+  height: 90vh;
+  margin-left: 10%;
+  margin-top: 5vh;
+  background-color: #fff;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+}
