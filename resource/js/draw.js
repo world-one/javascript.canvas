@@ -15,8 +15,27 @@ class Drawing {
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'canvas';
     this.ctx = this.canvas.getContext('2d');
-    this.body.appendChild(this.canvas);
+    this.resize();
     this.addEvent();
+    this.body.appendChild(this.canvas);
+    this.addClearButton();
+  }
+  
+  resize() {
+    this.canvas.width = window.innerWidth * 0.9 * 0.8;
+    this.canvas.height = window.innerHeight * 0.8;
+    window.addEventListener('resize', (e) => {
+      this.canvas.width = e.target.innerWidth * 0.9 * 0.8;
+      this.canvas.height = e.target.innerHeight * 0.8;
+    });
+  }
+
+  addClearButton() {
+    const clearButton = document.createElement('button');
+    clearButton.innerText = '초기화';
+    clearButton.className = 'clearCanvasButton';
+    clearButton.addEventListener('click', this.clearAll.bind(this));
+    this.body.appendChild(clearButton);
   }
 
   addEvent() {
@@ -55,43 +74,3 @@ class Drawing {
 }
 
 export default Drawing;
-
-// function initDrawingCanvas() {
-//     const body = document.getElementById('Contents');
-//     const canvas = document.createElement('canvas');
-//     canvas.id = 'canvas';
-//     const ctx = canvas.getContext('2d');
-//     body.appendChild(canvas);
-// }
-
-// canvas.addEventListener('mousedown', (e) => {
-//     ctx.beginPath();
-//     position.drawable = true;
-//     setPosition(e);
-//     ctx.moveTo(position.X, position.Y);
-// });
-
-// canvas.addEventListener('mousemove', (e) => {
-//     if (!position.drawable) return;
-//     setPosition(e);
-//     ctx.lineTo(position.X, position.Y);
-//     ctx.stroke();
-// });
-
-// canvas.addEventListener('mouseup', finishDraw);
-// canvas.addEventListener('mouseout',finishDraw);
-
-// function setPosition(e) {
-//     position.X = e.pageX - canvas.offsetLeft;
-//     position.Y = e.pageY - canvas.offsetTop;
-// }
-
-// function finishDraw() {
-//     position.drawable = false;
-//     position.X = -1;
-//     position.Y = -1;
-// }
-
-// export function clearAll() {
-//     ctx.clearRect(0,0, canvas.clientWidth, canvas.height);
-// }

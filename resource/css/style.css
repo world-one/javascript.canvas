@@ -11,8 +11,8 @@ li {
 
 .wrap {
   display: flex;
-  height: 100vh;
   background-color: #f0f0f0;
+  height: 100vh;
 }
 .menu {
   width: 10%;
@@ -29,10 +29,18 @@ li {
   
 }
 #canvas {
-  width: 80%;
-  height: 90vh;
+  cursor: pointer;
   margin-left: 10%;
   margin-top: 5vh;
   background-color: #fff;
   box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+}
+.clearCanvasButton {
+  margin-left: 10%;
+  margin-top: 16px;
+  background-color: #000;
+  color: #fff;
+  width: 200px;
+  padding: 8px 0;
+  font-size: 24px;
 }
