@@ -11,31 +11,19 @@ class Drawing {
   }
 
   init() {
-    this.body = document.getElementById('Contents');
-    this.canvas = document.createElement('canvas');
-    this.canvas.id = 'canvas';
+    this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.resize();
     this.addEvent();
-    this.body.appendChild(this.canvas);
     this.addClearButton();
-  }
-  
-  resize() {
-    this.canvas.width = window.innerWidth * 0.9 * 0.8;
-    this.canvas.height = window.innerHeight * 0.8;
-    window.addEventListener('resize', (e) => {
-      this.canvas.width = e.target.innerWidth * 0.9 * 0.8;
-      this.canvas.height = e.target.innerHeight * 0.8;
-    });
   }
 
   addClearButton() {
+    const contentsWrap = document.getElementById('Contents');
     const clearButton = document.createElement('button');
     clearButton.innerText = '초기화';
     clearButton.className = 'clearCanvasButton';
     clearButton.addEventListener('click', this.clearAll.bind(this));
-    this.body.appendChild(clearButton);
+    contentsWrap.appendChild(clearButton);
   }
 
   addEvent() {

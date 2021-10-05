@@ -13,8 +13,8 @@
   <div class="wrap">
     <ul class="menu">
       <li><a href="#drawing">Drawing</a></li>
-      <li><a href="#">Bounce Ball</a></li>
-      <li><a href="#">HeartBeat</a></li>
+      <li><a href="#bounceBall">Bounce Ball</a></li>
+      <li><a href="#heartbeat">Heartbeat</a></li>
     </ul>
     <div id="Contents" class="contents">
     </div>
@@ -24,9 +24,47 @@
 <!-- <script type="module" src="./index.js"></script> -->
 <script type="module">
   import Drawing from './resource/js/draw.js';
-  new Drawing();
+  import { start } from './resource/js/ball.js'
+
+  console.log(window)
+  window.onload = (e) => {
+    setCanvas();
+    const hash = e.path[0].location.hash;
+    if (hash === '#drawing') {
+      new Drawing();
+    } else if (hash === '#bounceBall') {
+        start();
+    }
+  };
+  
   const menu = document.querySelector('.menu');
   menu.addEventListener('click', (e) => {
-    console.log(e.target);
+    const hash = e.target.hash;
+    if (hash === '#drawing') {
+      new Drawing();
+    } else if (hash === '#bounceBall') {
+        start();
+    }
+    
   });
+
+  function setCanvas() {
+    const contentsWrap = document.getElementById('Contents');
+    const canvas = document.createElement('canvas');
+    canvas.id = 'canvas';
+    const ctx = canvas.getContext('2d');
+    contentsWrap.appendChild(canvas);
+    resize();
+  }
+
+  function resize() {
+    const canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth * 0.9 * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+    window.addEventListener('resize', (e) => {
+      canvas.width = e.target.innerWidth * 0.9 * 0.8;
+      canvas.height = e.target.innerHeight * 0.8;
+    });
+  }
+
 </script>
