@@ -12,6 +12,8 @@ class Ball{
     this.color = color;
     this.canvas_width = width;
     this.canvas_height = height;
+    this.canvas = document.getElementById('canvas');
+    this.ctx = canvas.getContext('2d');
 
     if (x > this.canvas_width / 2) {
       this.isBoundX = true;
@@ -64,16 +66,16 @@ class Ball{
     }
   }
 
-  draw(ctx){
+  draw(){
     this.moveX();
     this.moveY();
 
-    ctx.beginPath();
-    ctx.fillStyle=this.color;
+    this.ctx.beginPath();
+    this.ctx.fillStyle=this.color;
     // x, y, radius, startAngle, endAngle, anticlockwise
-    ctx.arc(this.x, this.y, this.radius, Math.PI*2, false);
-    ctx.closePath();
-    ctx.fill();
+    this.ctx.arc(this.x, this.y, this.radius, Math.PI*2, false);
+    this.ctx.closePath();
+    this.ctx.fill();
     // requestAnimationFrame(this.draw.bind(this));
   }
 }
@@ -102,20 +104,30 @@ export function start() {
   const positionY = getRandomInt(1, canvas_height);
   const size = getRandomInt();
   const speed = getRandomInt(10, 100);
-  const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height)
+  const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height);
   draw();
+  function draw() {
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    ball.draw();
+    requestAnimationFrame(draw);  
+  }
   
 }
 
 // start();
-function draw() {
-  const canvas_width = window.innerWidth * 0.9 * 0.8;
-  const canvas_height = window.innerHeight * 0.8;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas_width, canvas_height);
-  ball.draw(ctx);  
-  requestAnimationFrame(draw);  
-} 
+// function draw() {
+//   const canvas_width = window.innerWidth * 0.9 * 0.8;
+//   const canvas_height = window.innerHeight * 0.8;
+//   const positionX = getRandomInt(1, canvas_width);
+//   const positionY = getRandomInt(1, canvas_height);
+//   const size = getRandomInt();
+//   const speed = getRandomInt(10, 100);
+//   const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height);
+//   const ctx = canvas.getContext('2d');
+//   ctx.clearRect(0, 0, canvas_width, canvas_height);
+//   ball.draw(ctx);  
+//   requestAnimationFrame(draw);  
+// } 
 
 function getRandomInt(min = 10, max = 50) {
   min = Math.ceil(min);
