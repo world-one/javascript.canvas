@@ -41,12 +41,26 @@
   menu.addEventListener('click', (e) => {
     const hash = e.target.hash;
     if (hash === '#drawing') {
+      changeCanvas();
       new Drawing();
     } else if (hash === '#bounceBall') {
-        start();
+      changeCanvas();
+      start();
     }
     
   });
+  
+  function changeCanvas() {
+    removeContentChildren();
+    setCanvas();
+  }
+
+  function removeContentChildren() {
+    const contentsWrap = document.getElementById('Contents');
+    while (contentsWrap.hasChildNodes()) {
+      contentsWrap.removeChild(contentsWrap.firstChild);
+    }
+  }
 
   function setCanvas() {
     const contentsWrap = document.getElementById('Contents');
