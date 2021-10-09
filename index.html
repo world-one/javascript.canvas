@@ -24,9 +24,9 @@
 <!-- <script type="module" src="./index.js"></script> -->
 <script type="module">
   import Drawing from './resource/js/draw.js';
-  import { start } from './resource/js/ball.js'
+  import { start } from './resource/js/ball.js';
+  import Heartbeat from './resource/js/heartbeat.js';
 
-  console.log(window)
   window.onload = (e) => {
     setCanvas();
     const hash = e.path[0].location.hash;
@@ -34,6 +34,8 @@
       new Drawing();
     } else if (hash === '#bounceBall') {
         start();
+    } else {
+      new Drawing();
     }
   };
   
@@ -46,6 +48,9 @@
     } else if (hash === '#bounceBall') {
       changeCanvas();
       start();
+    } else if (hash === '#heartbeat') {
+      changeCanvas();
+      new Heartbeat();
     }
     
   });
