@@ -69,14 +69,12 @@ class Ball{
   draw(){
     this.moveX();
     this.moveY();
-
     this.ctx.beginPath();
     this.ctx.fillStyle=this.color;
     // x, y, radius, startAngle, endAngle, anticlockwise
     this.ctx.arc(this.x, this.y, this.radius, Math.PI*2, false);
     this.ctx.closePath();
     this.ctx.fill();
-    // requestAnimationFrame(this.draw.bind(this));
   }
 }
 
@@ -87,50 +85,27 @@ export function start() {
   const ctx = canvas.getContext('2d');
   const canvas_width = window.innerWidth * 0.9 * 0.8;
   const canvas_height = window.innerHeight * 0.8;
-  // const balls = BALL_COLORS.map((color) => {
-    // const positionX = getRandomInt(1, 500);
-    // const positionY = getRandomInt(1, 300);
-    // const size = getRandomInt();
-    // const speed = getRandomInt(10, 100);
-    // const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height)
-  // });
+  
+  const balls = BALL_COLORS.map((color) => {
+    const positionX = getRandomInt(1, canvas_width);
+    const positionY = getRandomInt(1, canvas_height);
+    const size = getRandomInt();
+    const speed = getRandomInt(10, 100);
+    return new Ball(positionX, positionY, size, speed, color, canvas_width, canvas_height);
+  });
 
-  // ctx.clearRect(0, 0, canvas_width, canvas_height);
-  // ball.draw(ctx);
-  // balls.forEach((item) => {
-  //   item.draw(ctx);
-  // })
-  const positionX = getRandomInt(1, canvas_width);
-  const positionY = getRandomInt(1, canvas_height);
-  const size = getRandomInt();
-  const speed = getRandomInt(10, 100);
-  const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height);
   draw();
   function draw() {
     ctx.clearRect(0, 0, canvas_width, canvas_height);
-    ball.draw();
-    requestAnimationFrame(draw);  
+    balls.forEach((ball) => {
+      ball.draw();
+    });
+    requestAnimationFrame(draw);
   }
-  
-}
-
-// start();
-// function draw() {
-//   const canvas_width = window.innerWidth * 0.9 * 0.8;
-//   const canvas_height = window.innerHeight * 0.8;
-//   const positionX = getRandomInt(1, canvas_width);
-//   const positionY = getRandomInt(1, canvas_height);
-//   const size = getRandomInt();
-//   const speed = getRandomInt(10, 100);
-//   const ball = new Ball(positionX, positionY, size, speed, 'red', canvas_width, canvas_height);
-//   const ctx = canvas.getContext('2d');
-//   ctx.clearRect(0, 0, canvas_width, canvas_height);
-//   ball.draw(ctx);  
-//   requestAnimationFrame(draw);  
-// } 
+};
 
 function getRandomInt(min = 10, max = 50) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
-}
+};
