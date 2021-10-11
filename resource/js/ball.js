@@ -83,14 +83,14 @@ const BALL_COLORS = ['red', 'coral', 'blue', 'yellow', 'green', 'aqua', 'black',
 export function start() {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
-  const canvas_width = window.innerWidth * 0.9 * 0.8;
-  const canvas_height = window.innerHeight * 0.8;
-  
+  const canvas_width = canvas.width;
+  const canvas_height = canvas.height;
+
   const balls = BALL_COLORS.map((color) => {
     const positionX = getRandomInt(1, canvas_width);
     const positionY = getRandomInt(1, canvas_height);
     const size = getRandomInt();
-    const speed = getRandomInt(10, 100);
+    const speed = getRandomInt(10, 50);
     return new Ball(positionX, positionY, size, speed, color, canvas_width, canvas_height);
   });
 

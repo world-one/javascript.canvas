@@ -67,6 +67,6 @@ function resize() {
 
 function setCanvasSize(wrap) {
   const canvas = document.getElementById(CANVAS_ID);
-  canvas.width = wrap.innerWidth * 0.9 * 0.8;
-  canvas.height = wrap.innerHeight * 0.8;
+  canvas.width = wrap.innerWidth * 0.9 * 0.5;
+  canvas.height = wrap.innerHeight * 0.6;
 };
