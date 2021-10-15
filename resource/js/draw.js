@@ -20,13 +20,13 @@ class Drawing {
     this.addClearButton();
     this.addEraserButton();
     this.color = 'black';
+
+    this.eraserMethod = this.eraserMouseDown.bind(this);
   }
 
   setLineColor(color) {
     this.color = color;
-    this.position.drawable = true;
-    this.finishErase();
-    this.addEvent();
+    this.canvas.removeEventListener('mousedown', this.eraserMethod, true)
   }
 
   addColorButtons() {
@@ -102,16 +102,14 @@ class Drawing {
     this.ctx.clearRect(0,0, this.canvas.clientWidth, this.canvas.height);
   }
 
-  removeEventListener() {
-    
+  eraserMouseDown() {
+    this.position.drawable = false;
+    this.position.eraser = true;
   }
 
   setEraser() {
     
-    this.canvas.addEventListener('mousedown', (e) => {
-      this.position.drawable = false;
-      this.position.eraser = true;
-    });
+    this.canvas.addEventListener('mousedown', this.eraserMethod, true);
   
     this.canvas.addEventListener('mousemove', (e) => {
       if (!this.position.eraser) return;
@@ -130,6 +128,8 @@ class Drawing {
   
   finishErase() {
     this.position.eraser = false;
+    this.position.x = -1;
+    this.position.y = -1;
     this.ctx.closePath();
   }
 }
