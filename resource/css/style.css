@@ -21,8 +21,11 @@ li {
   background-color: #000;
 }
 
-.menu a {
+.menu__anchor {
+  display: block;
+  margin-bottom: 16px;
   color: #fff;
+  font-size: 18px;
 }
 
 #canvas {
