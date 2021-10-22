@@ -1,13 +1,15 @@
 import Drawing from './draw.js';
 import { start } from './ball.js';
 import Heartbeat from './heartbeat.js';
-import {follow} from './follow.js';
+import { follow } from './follow.js';
+import { light } from './light.js';
 
 const URL_HASH = {
   DRAWING: '#drawing',
   BOUNCE_BALL: '#bounceBall',
   HEARTBEAT: '#heartbeat',
   FOLLOW: '#follow',
+  LIGHT: '#light',
 };
 
 const CANVAS_ID = 'canvas';
@@ -37,6 +39,10 @@ function selectedCanvas(hash) {
       break;
     case URL_HASH.FOLLOW:
       follow();
+      // f.draw();
+      break;
+    case URL_HASH.LIGHT:
+      light(50, 50, 30, 'red');
       // f.draw();
       break;
     default:
