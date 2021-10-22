@@ -9,7 +9,9 @@ export function follow() {
   let avoidBallY = canvas.height / 2;
   let pageX = 0;
   let pageY = 0;
+  
   init();
+
   function init() {
     draw();
   }
@@ -49,12 +51,13 @@ export function follow() {
     });
 
     ballX = followBallPos.x;
-    ballY =followBallPos.y;
+    ballY = followBallPos.y;
 
     const avoidBallPos = checkEndLine({
-      x: avoidBallX - (pageX - avoidBallX) / 10000, 
-      y: avoidBallY - (pageY - avoidBallY) / 10000
+      x: avoidBallX - (canvas_width / (pageX - avoidBallX)) / 2000, 
+      y: avoidBallY - (canvas_height / (pageY - avoidBallY)) / 2000
     });
+    
     avoidBallX = avoidBallPos.x;
     avoidBallY = avoidBallPos.y;
   }
