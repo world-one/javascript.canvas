@@ -1,0 +1,21 @@
+@charset "UTF-8";
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+
+.contents {
+  background-color: #acacac;
+  width: 100vw;
+  height: 100vh;
+}
+.canvas {
+  background-color: #fff;
+  margin: 5vh 5vw;
+  width: 90vw;
+  height: 90vh; 
+}
