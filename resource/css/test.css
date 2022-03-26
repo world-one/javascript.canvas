@@ -9,13 +9,14 @@ li {
 }
 
 .contents {
+  display: flex;
   background-color: #acacac;
   width: 100vw;
   height: 100vh;
 }
 .canvas {
   background-color: #fff;
-  margin: 5vh 5vw;
-  width: 90vw;
-  height: 90vh; 
+  margin: 5vh auto;
+  width: 500px;
+  height: 500px;
 }

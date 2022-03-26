@@ -1,7 +1,7 @@
 const LINE_COLORS = ['black', 'red', 'yellow', 'coral', 'green'];
 
 class Drawing {
-  
+
   position = {
     drawable: false,
     x: -1,
@@ -41,7 +41,7 @@ class Drawing {
       colorButton.addEventListener('click', this.setLineColor.bind(this, color));
       buttonsWrap.appendChild(colorButton);
     });
-  
+
     contentsWrap.appendChild(buttonsWrap);
   }
 
@@ -75,9 +75,9 @@ class Drawing {
     this.canvas.addEventListener('mousemove', (e) => this.drawLine(this, e));
 
     this.canvas.addEventListener('mouseup', this.finishDraw.bind(this));
-    this.canvas.addEventListener('mouseout',this.finishDraw.bind(this));
+    this.canvas.addEventListener('mouseout', this.finishDraw.bind(this));
   }
-  
+
   drawLine(_, e) {
     if (!this.position.drawable) return;
     this.setPosition(e);
@@ -99,7 +99,7 @@ class Drawing {
   }
 
   clearAll() {
-    this.ctx.clearRect(0,0, this.canvas.clientWidth, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.height);
   }
 
   eraserMouseDown() {
@@ -108,24 +108,24 @@ class Drawing {
   }
 
   setEraser() {
-    
+
     this.canvas.addEventListener('mousedown', this.eraserMethod, true);
-  
+
     this.canvas.addEventListener('mousemove', (e) => {
       if (!this.position.eraser) return;
       this.setPosition(e);
       this.ctx.beginPath();
-      this.ctx.arc(this.position.x, this.position.y, 40, 0, 2* Math.PI);
+      this.ctx.arc(this.position.x, this.position.y, 40, 0, 2 * Math.PI);
       this.ctx.fillStyle = '#fff';
       this.ctx.strokeStyle = '#fff';
       this.ctx.stroke();
-      
+
       this.ctx.fill();
     });
     this.canvas.addEventListener('mouseup', this.finishErase.bind(this));
-    this.canvas.addEventListener('mouseout',this.finishErase.bind(this));
+    this.canvas.addEventListener('mouseout', this.finishErase.bind(this));
   }
-  
+
   finishErase() {
     this.position.eraser = false;
     this.position.x = -1;

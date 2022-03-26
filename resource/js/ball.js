@@ -1,9 +1,9 @@
-class Ball{
-  
+class Ball {
+
   isBoundX = false;
   isBoundY = false;
 
-  constructor(x, y, radius, speed, color, width, height){
+  constructor(x, y, radius, speed, color, width, height) {
     this.x = x;
     this.y = y;
     this.vx = x / speed;
@@ -66,13 +66,13 @@ class Ball{
     }
   }
 
-  draw(){
+  draw() {
     this.moveX();
     this.moveY();
     this.ctx.beginPath();
-    this.ctx.fillStyle=this.color;
+    this.ctx.fillStyle = this.color;
     // x, y, radius, startAngle, endAngle, anticlockwise
-    this.ctx.arc(this.x, this.y, this.radius, Math.PI*2, false);
+    this.ctx.arc(this.x, this.y, this.radius, Math.PI * 2, false);
     this.ctx.closePath();
     this.ctx.fill();
   }
@@ -96,6 +96,7 @@ export function start() {
 
   draw();
   function draw() {
+    console.log('d')
     ctx.clearRect(0, 0, canvas_width, canvas_height);
     balls.forEach((ball) => {
       ball.draw();
